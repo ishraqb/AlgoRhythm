@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+build/
+DerivedData/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+
+# Node / CDK
+node_modules/
+backend/cdk.out/
+backend/cdk-outputs.json
+backend/*.js
+backend/*.d.ts
+scripts/*.js
+scripts/*.d.ts
+*.log
+
+# Local secrets / config (never commit endpoints or keys)
+ios/AlgoRhythm/Resources/AppConfig.plist
+.env
+.env.*
+
+# Generated card data from ingestion
+scripts/out/
