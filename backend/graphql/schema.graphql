@@ -1,0 +1,45 @@
+type Card {
+  id: ID!
+  topic: String!
+  difficulty: Int!
+  prompt: String!
+  solution: String!
+  code: String!
+  language: String!
+  timeComplexity: String!
+  spaceComplexity: String!
+  source: String!
+  license: String!
+}
+
+input PerformanceInput {
+  topicId: String!
+  tier: Int!
+  mastered: Int!
+  reviewed: Int!
+  streak: Int!
+}
+
+type PerformanceRecord {
+  topicId: String!
+  tier: Int!
+  mastered: Int!
+  reviewed: Int!
+  streak: Int!
+}
+
+type Query {
+  getCardsByTopic(topic: String!): [Card!]!
+  generateCards(topic: String!, count: Int!): [Card!]!
+}
+
+type Mutation {
+  # Writes are scoped to the caller's identity on the server; clients cannot
+  # name which user they're writing for.
+  updateUserPerformanceTrack(records: [PerformanceInput!]!): [PerformanceRecord!]!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
