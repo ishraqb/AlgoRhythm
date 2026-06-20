@@ -8,6 +8,29 @@ This walks through running AlgoRhythm two ways:
    DynamoDB + Lambda), seed the card catalog, and point the app at it for real
    accounts and cloud sync.
 
+There is also a **web edition** (`web/`) that anyone can open in a browser —
+no install required: **<https://ishraqb.github.io/AlgoRhythm/>**
+
+---
+
+## 0. Web app (browser, zero install)
+
+The `web/` folder is a React + TypeScript (Vite) port of the swipe deck and
+adaptive engine. It runs entirely client-side and saves progress in the
+browser, so there is no backend or cost.
+
+```bash
+cd web
+npm install
+npm run dev      # local dev server
+npm run build    # production bundle in web/dist
+```
+
+It deploys automatically to GitHub Pages: any push to `main` that touches
+`web/**` runs `.github/workflows/deploy-pages.yml`, which builds the bundle and
+publishes it to <https://ishraqb.github.io/AlgoRhythm/>. (One-time setup:
+repository **Settings → Pages → Source → GitHub Actions**.)
+
 ---
 
 ## Prerequisites

@@ -3,10 +3,15 @@
 A native iOS app for technical-interview prep with a swipe-to-study flashcard
 interface, an adaptive difficulty engine, and a serverless AWS backend.
 
+**Try it in your browser: [ishraqb.github.io/AlgoRhythm](https://ishraqb.github.io/AlgoRhythm/)**
+
 - **iOS app** (`ios/`): Swift / SwiftUI. Swipe right to mark a card mastered,
   left to flag it for review; tap to flip for the solution, code, and
   time/space complexity. Haptics and an optional rapid-fire tick keep sessions
   focused.
+- **Web app** (`web/`): React + TypeScript (Vite) port of the same swipe deck
+  and adaptive engine, running fully client-side with progress saved in the
+  browser. Deployed to GitHub Pages via the workflow in `.github/workflows/`.
 - **Backend** (`backend/`): AWS CDK (TypeScript) defining Cognito (email/password
   auth), AppSync (GraphQL), DynamoDB, and Lambda resolvers.
 - **Scripts** (`scripts/`): pull free, attribution-licensed content (MBPP,
