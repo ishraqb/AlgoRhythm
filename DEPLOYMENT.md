@@ -68,6 +68,40 @@ xcrun simctl launch booted com.algorhythm.app
 
 ---
 
+## 1b. Run on a physical iPhone
+
+You can install on your own device with a **free Apple ID** — no paid Apple
+Developer Program required. Free signing has limits: the app expires after 7
+days (just rebuild to renew), up to 3 sideloaded apps at a time, and no push
+notifications. AlgoRhythm uses no paid entitlements, so everything works.
+
+1. **Connect** your iPhone to the Mac with a cable and tap **Trust** if prompted.
+2. **Enable Developer Mode** on the iPhone (iOS 16+):
+   Settings → Privacy & Security → Developer Mode → on, then restart.
+3. **Open the project** and select your device as the run destination:
+
+   ```bash
+   open ios/AlgoRhythm.xcodeproj
+   ```
+
+4. **Set up signing** — select the `AlgoRhythm` target →
+   *Signing & Capabilities* tab:
+   - Check **Automatically manage signing**.
+   - **Team:** add your Apple ID (Xcode → Settings → Accounts → `+`) and pick the
+     resulting *(Personal Team)*.
+   - If you get a "bundle identifier is not available" error, change the
+     **Bundle Identifier** to something unique, e.g. `com.<yourname>.algorhythm`.
+5. **Run** (`Cmd-R`). Xcode builds, installs, and launches on the phone.
+6. **Trust the developer cert** (first run only): on the iPhone,
+   Settings → General → VPN & Device Management → tap your Apple ID →
+   **Trust**. Then relaunch the app from the home screen.
+
+The app runs fully on-device in guest mode. To use real accounts / cloud sync on
+the phone, complete the backend deploy below first so `AppConfig.plist` is baked
+into the build.
+
+---
+
 ## 2. Full-stack deploy (AWS backend)
 
 ### Step 1 — Configure AWS credentials
