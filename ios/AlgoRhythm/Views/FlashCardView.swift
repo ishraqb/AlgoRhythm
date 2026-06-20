@@ -39,13 +39,14 @@ struct FlashCardView: View {
         VStack(alignment: .leading, spacing: 16) {
             header
             Text(card.prompt)
-                .font(.title3.weight(.semibold))
+                .font(Theme.display(.title2, weight: .semibold))
                 .foregroundStyle(.white)
+                .lineSpacing(3)
                 .fixedSize(horizontal: false, vertical: true)
             Spacer()
             Label("Tap to reveal", systemImage: "hand.tap.fill")
                 .font(.caption)
-                .foregroundStyle(.white.opacity(0.45))
+                .foregroundStyle(Theme.accent.opacity(0.7))
         }
         .padding(24)
     }

@@ -65,7 +65,7 @@ struct StatsView: View {
                 .font(.system(size: 44))
                 .foregroundStyle(Theme.accent)
             Text("No progress yet")
-                .font(.headline)
+                .font(Theme.display(.title3, weight: .semibold))
                 .foregroundStyle(.white)
             Text("Swipe through some cards and your per-topic mastery shows up here.")
                 .font(.subheadline)

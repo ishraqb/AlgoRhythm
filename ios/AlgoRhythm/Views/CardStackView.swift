@@ -80,7 +80,7 @@ struct CardStackView: View {
                 .font(.system(size: 54))
                 .foregroundStyle(Theme.accent)
             Text("Deck complete")
-                .font(.title2.weight(.bold))
+                .font(Theme.display(.title, weight: .bold))
                 .foregroundStyle(.white)
             Text("You worked through every card in this filter.")
                 .font(.subheadline)

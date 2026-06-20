@@ -23,11 +23,11 @@ enum Difficulty: Int, Codable, CaseIterable, Comparable, Identifiable {
 
     var tint: Color {
         switch self {
-        case .intro: return .teal
-        case .easy: return .green
-        case .medium: return .yellow
-        case .hard: return .orange
-        case .expert: return .red
+        case .intro: return Color(red: 0.451, green: 0.643, blue: 0.580)
+        case .easy: return Color(red: 0.514, green: 0.694, blue: 0.404)
+        case .medium: return Color(red: 0.882, green: 0.659, blue: 0.286)
+        case .hard: return Color(red: 0.886, green: 0.553, blue: 0.286)
+        case .expert: return Color(red: 0.851, green: 0.435, blue: 0.318)
         }
     }
 

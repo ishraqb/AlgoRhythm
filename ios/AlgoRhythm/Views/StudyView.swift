@@ -18,26 +18,41 @@ struct StudyView: View {
     }
 
     private var header: some View {
-        HStack {
+        HStack(alignment: .firstTextBaseline) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("AlgoRhythm")
-                    .font(.title2.weight(.bold))
+                    .font(Theme.display(.title, weight: .bold))
                     .foregroundStyle(.white)
                 Text("\(viewModel.sessionMastered) mastered · \(viewModel.sessionReviewed) to review")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.55))
             }
             Spacer()
-            Button {
-                viewModel.toggleRapidFire()
-            } label: {
-                Image(systemName: viewModel.rapidFire ? "bolt.fill" : "bolt")
-                    .font(.title3)
-                    .foregroundStyle(viewModel.rapidFire ? Theme.accent : .white.opacity(0.6))
-            }
-            .accessibilityLabel("Rapid-fire mode")
+            rapidFireToggle
         }
         .padding(.horizontal, 20)
+    }
+
+    private var rapidFireToggle: some View {
+        Button {
+            viewModel.toggleRapidFire()
+        } label: {
+            HStack(spacing: 5) {
+                Image(systemName: viewModel.rapidFire ? "bolt.fill" : "bolt")
+                Text("Rapid")
+            }
+            .font(.caption.weight(.semibold))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 7)
+            .foregroundStyle(viewModel.rapidFire ? Theme.background : Theme.accent)
+            .background(viewModel.rapidFire ? Theme.accent : Color.white.opacity(0.06))
+            .clipShape(Capsule())
+            .overlay(
+                Capsule().stroke(Theme.accent.opacity(viewModel.rapidFire ? 0 : 0.35), lineWidth: 1)
+            )
+        }
+        .accessibilityLabel("Rapid-fire mode")
+        .accessibilityHint("Adds a tick and stronger haptic on each swipe for fast review")
     }
 
     private var filterPicker: some View {

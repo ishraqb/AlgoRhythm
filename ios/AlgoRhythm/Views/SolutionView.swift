@@ -8,12 +8,13 @@ struct SolutionView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 Text("Solution")
-                    .font(.headline)
+                    .font(Theme.display(.title3, weight: .semibold))
                     .foregroundStyle(Theme.accent)
 
                 Text(card.solution)
                     .font(.callout)
                     .foregroundStyle(.white.opacity(0.9))
+                    .lineSpacing(2)
                     .fixedSize(horizontal: false, vertical: true)
 
                 if card.hasCode {
