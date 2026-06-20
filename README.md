@@ -12,6 +12,8 @@ interface, an adaptive difficulty engine, and a serverless AWS backend.
 - **Scripts** (`scripts/`): pull free, attribution-licensed content (MBPP,
   system-design-primer) and seed it into DynamoDB.
 
+For step-by-step run and deploy instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## Architecture
 
 ```
