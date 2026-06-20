@@ -37,9 +37,8 @@ struct AuthView: View {
 
     private var branding: some View {
         VStack(spacing: 8) {
-            Image(systemName: "bolt.heart.fill")
-                .font(.system(size: 48))
-                .foregroundStyle(Theme.accent)
+            BrandMark(size: 54)
+                .padding(.bottom, 4)
             Text("AlgoRhythm")
                 .font(Theme.display(.largeTitle, weight: .bold))
                 .foregroundStyle(.white)

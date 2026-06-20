@@ -18,7 +18,8 @@ struct StudyView: View {
     }
 
     private var header: some View {
-        HStack(alignment: .firstTextBaseline) {
+        HStack(spacing: 10) {
+            BrandMark(size: 26)
             VStack(alignment: .leading, spacing: 2) {
                 Text("AlgoRhythm")
                     .font(Theme.display(.title, weight: .bold))
