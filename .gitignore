@@ -16,6 +16,9 @@ Packages/
 # Node / CDK
 node_modules/
 web/dist/
+web/*.tsbuildinfo
+web/vite.config.js
+web/vite.config.d.ts
 backend/cdk.out/
 backend/cdk-outputs.json
 backend/*.js
