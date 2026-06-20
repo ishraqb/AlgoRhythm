@@ -15,6 +15,7 @@ Packages/
 
 # Node / CDK
 node_modules/
+web/dist/
 backend/cdk.out/
 backend/cdk-outputs.json
 backend/*.js
