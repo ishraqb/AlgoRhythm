@@ -27,7 +27,7 @@ struct AuthView: View {
                         .foregroundStyle(Theme.review)
                         .multilineTextAlignment(.center)
                 }
-                if !auth.backendConfigured {
+                if !auth.awaitingConfirmation {
                     guestFallback
                 }
             }
@@ -38,10 +38,10 @@ struct AuthView: View {
     private var branding: some View {
         VStack(spacing: 8) {
             Image(systemName: "bolt.heart.fill")
-                .font(.system(size: 50))
+                .font(.system(size: 48))
                 .foregroundStyle(Theme.accent)
             Text("AlgoRhythm")
-                .font(.largeTitle.weight(.bold))
+                .font(Theme.display(.largeTitle, weight: .bold))
                 .foregroundStyle(.white)
             Text("Swipe your way to interview-ready")
                 .font(.subheadline)
@@ -90,17 +90,30 @@ struct AuthView: View {
     }
 
     private var guestFallback: some View {
-        VStack(spacing: 6) {
-            Text("Backend not configured")
-                .font(.caption2)
-                .foregroundStyle(.white.opacity(0.4))
-            Button("Continue without an account") {
+        VStack(spacing: 12) {
+            HStack {
+                line
+                Text("or")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.4))
+                line
+            }
+            Button("Continue as guest") {
                 auth.continueAsGuest()
             }
             .font(.footnote.weight(.semibold))
-            .foregroundStyle(.white.opacity(0.8))
+            .foregroundStyle(.white.opacity(0.85))
+            Text("Progress stays on this device")
+                .font(.caption2)
+                .foregroundStyle(.white.opacity(0.35))
         }
-        .padding(.top, 8)
+        .padding(.top, 4)
+    }
+
+    private var line: some View {
+        Rectangle()
+            .fill(.white.opacity(0.12))
+            .frame(height: 1)
     }
 
     // MARK: - Small builders
@@ -128,7 +141,7 @@ struct AuthView: View {
         Button(action: action) {
             ZStack {
                 if auth.isLoading {
-                    ProgressView().tint(.white)
+                    ProgressView().tint(Theme.background)
                 } else {
                     Text(title).font(.headline)
                 }
@@ -136,7 +149,7 @@ struct AuthView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 52)
             .background(Theme.accent)
-            .foregroundStyle(.white)
+            .foregroundStyle(Theme.background)
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .disabled(auth.isLoading)

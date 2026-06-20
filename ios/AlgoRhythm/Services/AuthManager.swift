@@ -25,6 +25,11 @@ final class AuthManager: ObservableObject {
     init() {
         client = CognitoAuthClient(region: config.region, clientId: config.userPoolClientId)
         restoreSession()
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("-uiPreviewGuest") {
+            continueAsGuest()
+        }
+        #endif
     }
 
     var backendConfigured: Bool { config.isConfigured }
